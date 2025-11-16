@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1760524010 source:c:\users\admin\documents\c++\olymp\7-8 republic\d\main.cpp
+	<iostream>
+	<map>
+	<vector>
+

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1762591515 source:c:\users\admin\documents\c++\olymp\training_contest\prefix_sum\main.cpp
+	<iostream>
+	<vector>
+

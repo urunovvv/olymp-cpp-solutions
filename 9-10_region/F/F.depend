@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1760527579 source:c:\users\admin\documents\c++\olymp\9-10 republic\f\main.cpp
+	<iostream>
+	<cmath>
+	<map>
+
+1762601206 source:c:\users\admin\documents\c++\olymp\9-10_region\f\main.cpp
+	<bits/stdc++.h>
+
