@@ -1,24 +1,32 @@
 #include <bits/stdc++.h>
 #define ll long long
-#define ld long double
 using namespace std;
-
-bool hmd(ll n){
-    ll cnt = 2;
-    if (n!=2 and n%2==0){return 0;}
-    for (ll i=2; i<sqrt(n); i++){
-        if ()
+bool is_prime(ll n) {
+    if (n < 2) return false;
+    if (n == 2 || n == 3) return true;
+    if (n % 2 == 0 || n % 3 == 0) return false;
+    for (ll i = 5; i * i <= n; i += 6) {
+        if (n % i == 0 || n % (i + 2) == 0)
+            return false;
     }
+    return true;
 }
 
-int main()
-{
-    ll l, r;
+int main() {
+    ll l,r;
     cin >> l >> r;
-    ll cnt = 0;
-    for (ll i=sqrt(l)+(i!=1); i<=sqrt(r); i++){
-        cnt++;
+
+    ll answer = 0;
+    ll left = (ll)ceil(sqrt(l));
+    ll right = (ll)floor(sqrt(r));
+    for (ll i = left; i <= right; i++) {
+        if (is_prime(i)) {
+            ll square = i * i;
+            if (square >= l && square <= r) {
+                answer++;
+            }
+        }
     }
-    cout << cnt;
+    cout << answer << '\n';
     return 0;
 }
