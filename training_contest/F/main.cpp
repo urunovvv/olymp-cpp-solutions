@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 #define pb push_back
 #define len size()
 #define ll long long
