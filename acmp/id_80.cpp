@@ -62,21 +62,5 @@ int main(){
             else cout << "NO"; break; }
         default: cout << "ERROR"; break;
     }
-    /**cin >> s;
-    __int128 a,b,c;
-    char op, eq;
-    stringstream ss(s);
-    if (!(ss >> a >> op >> b >> eq >> c) || eq != '=' || !ss.eof()) {
-        cout << "ERROR\n";
-        return 0;
-    }
-    if (op=='+' and a+b==c){cout << "YES"; return 0;}
-    else if (op=='-' and a-b==c){cout << "YES"; return 0;}
-    else if (op=='*' and a*b==c){cout << "YES"; return 0;}
-    else if (op=='/' and (ld)(a)/(ld)(b)==c){
-        cout << (b!=0 ? "YES" : "NO") << '\n';
-        return 0;
-    }
-    else cout << "NO" << '\n';*/
     return 0;
 }
