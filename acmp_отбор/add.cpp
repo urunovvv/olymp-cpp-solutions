@@ -1,20 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main(){
-    int n,k;
+int main() {
+    int n, k;
     cin >> n >> k;
-    vector<int >v(n);
-    int j=1;
-    for (int i : v){
-        i = j;
-        j++;
+    vector<int> a;
+    for (int i = 1; i <= n; i++) a.push_back(i);
+    int idx = 0;
+    while (a.size() > 1) {
+        idx = (idx + k - 1) % a.size();
+        a.erase(a.begin() + idx);
     }
-    int i=1;
-    while (v.size() > 1){
-        v.erase(v.begin()+((k-1)*i)%n);
-        i++;
-    }
-    cout << v[0];
+    cout << a[0];
     return 0;
 }
