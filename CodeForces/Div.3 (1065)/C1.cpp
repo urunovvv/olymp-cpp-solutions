@@ -22,7 +22,8 @@ int main(){
         bool win;
         for (int i=n-1; i>=0; i--){
             if (a[i] != b[i]){
-                win = ((i%2) ? true : false);
+                win = (!(i%2) ? true : false);
+                break;
             }
         }
         cout << (win ? "Ajisai\n" : "Mai\n");
