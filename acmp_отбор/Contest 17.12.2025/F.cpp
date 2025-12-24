@@ -18,7 +18,7 @@ int main(){
         }
         else{
             if (cnt>1) res[v[i].second] = --cnt;
-            else res[v[i].second] = ++cnt;
+            else res[v[i].second] = cnt++;
         }
     }
     for (auto x:res){cout << x << ' ';}
