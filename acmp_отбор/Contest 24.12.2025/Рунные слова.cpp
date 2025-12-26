@@ -2,27 +2,41 @@
 
 using namespace std;
 
-int main(){
+void solve() {
     string s;
-    cin >> s;
-    size_t n = s.size();
-    if (n==1 or islower(s[0]) or isupper(s[n-1])){
+    if (!(cin >> s)) return;
+    int n = s.length();
+    int i = 0;
+    if (n==1 or islower(s[0]) or isupper(s[n-1])) {
         cout << "No\n";
-        return 0;
+        return;
     }
-    int i=0;
-    while (i < n){
-        if (isupper(s[i])){
+    while (i < n) {
+        if (isupper(s[i])) {
             int cnt = 1;
             i++;
-            while (i < n and islower(s[i++])) cnt++;
-            if (cnt < 2 or cnt > 4){
+            while (i < n && islower(s[i])) {
+                i++;
+                cnt++;
+            }
+            if (cnt < 2 or cnt > 4) {
                 cout << "No\n";
-                return 0;
+                return;
             }
         }
-        else i++;
+        else {
+            cout << "No\n";
+            return;
+        }
     }
+
     cout << "Yes\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    solve();
     return 0;
 }
