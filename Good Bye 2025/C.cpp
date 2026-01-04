@@ -1,17 +1,19 @@
 #include <bits/stdc++.h>
 #define ll long long
 using namespace std;
-int main(){
-    ll n, v, k, sum = 0;
+
+int main() {
+    ll n,v,k;
     cin >> n >> v >> k;
-    for (ll i = 1; i <= n; i++) {
-        ll cur = (i - 1) * k;
-        if (cur >= v) {
-            cout << "NO";
+    ll ans = 0;
+    for (ll d = 1; d <= n; d++) {
+        ll melt = (d - 1) * k;
+        if (melt >= v) {
+            cout << "NO\n";
             return 0;
         }
-        sum += v - cur;
+        ans += (v - melt);
     }
-    cout << "YES " << sum;
+    cout << "YES " << ans << "\n";
     return 0;
 }

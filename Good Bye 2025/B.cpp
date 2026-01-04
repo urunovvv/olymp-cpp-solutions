@@ -1,13 +1,12 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main() {
     string s;
     cin >> s;
-    string str = "2025";
+    string y = "2025";
     int pos = 0;
-    for (char c : s) {
+    for (char c : y) {
         for (int i = pos; i < s.size(); i++) {
             if (s[i] == c) {
                 cout << i + 1;

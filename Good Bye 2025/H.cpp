@@ -1,39 +1,36 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-bool func(string s) {
-    for (char &c:s){
-        if (isalpha(c)) c = tolower(c);
-        if (!isalpha(c) and !isdigit(c)) return false;
-    }
-    return true;
-}
 
 int main() {
+    char h;
     string s;
-    cin >> s;
-    if (s[0] != '#' or (s.size() != 4 and s.size() != 7)) {
-        cout << "None\n";
-        return 0;
-    }
-    vector<int> rgb;
-    if (s.size() == 4) {
-        for (int i = 1; i <= 3; i++) {
-            int n;
-            string cur = to_string(s[i]);
-            if(func(cur)) n = stoi(cur, nullptr, 16);
-            else {cout << "None"; return 0;}
-            rgb.push_back(n);
-        }
-    } else {
-        for (int i = 1; i <= 5; i += 2) {
-            int n;
-            string cur = s[i]+s[i+1];
-            if (func(cur)) n = stoi(cur, nullptr, 16);
-            else {cout << "None"; return 0;}
-            rgb.push_back(n);
+    cin >> h >> s;
+    int r,g,b;
+    string rr,gg,bb;
+    if (s.size()!=6 and s.size()!=3){cout << "None\n"; return 0;}
+    for (auto &c:s){
+        if (!isdigit(c) and !(c>='A' and c <= 'F') and !(c>='a' and c <= 'f')){
+            cout << "None\n";
+            return 0;
         }
     }
-    cout << "rgb(" << rgb[0] << ", " << rgb[1] << ", " << rgb[2] << ")";
+    if (s.size()==3){
+        rr = s.substr(0, 1);
+        gg = s.substr(1, 1);
+        bb = s.substr(2, 1);
+        rr+=rr;
+        gg+=gg;
+        bb+=bb;
+    }
+    else {
+        rr = s.substr(0, 2);
+        gg = s.substr(2, 2);
+        bb = s.substr(4, 2);
+    }
+    r = stoi(rr, nullptr, 16);
+    g = stoi(gg, nullptr, 16);
+    b = stoi(bb, nullptr, 16);
+    cout << "rgb(" << r << ", " << g << ", " << b << ")";
     return 0;
 }

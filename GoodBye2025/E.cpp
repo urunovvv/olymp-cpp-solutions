@@ -18,5 +18,5 @@ int main(){
         else cur =1;
         if (cur > mx) mx = cur;
     }
-    cout << mx << " \n";
+    cout << mx;
 }
