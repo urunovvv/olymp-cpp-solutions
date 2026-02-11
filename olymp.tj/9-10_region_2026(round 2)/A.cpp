@@ -9,7 +9,6 @@ int main() {
         cout << -1;
         return 0;
     }
-
     ll x = (2*a - b) / 3;
     ll y = (2*b - a) / 3;
     if (x < 0 || y < 0) {

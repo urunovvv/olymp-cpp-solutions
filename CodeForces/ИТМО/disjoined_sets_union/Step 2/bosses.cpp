@@ -1,11 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
-vector<int>p;
+vector<int>p, steps(3e5, 0);
 int cnt = 0;
 int fp(int x){
     if (x == p[x]) return x;
-    while (x != p[x]) {x = p[x]; cnt++;}
-    return p[x];
+    int px = fp(p[x]);
+    steps[x] += steps[p[x]];
+    return p[x] = px;
 }
 
 void Union(int x, int y){
@@ -13,6 +14,7 @@ void Union(int x, int y){
     int py = fp(y);
     if (px == py) return;
     p[px] = py;
+    steps[px] = 1;
 }
 
 int main()
@@ -36,7 +38,7 @@ int main()
             int c;
             cin >> c;
             fp(c);
-            cout << cnt << '\n';
+            cout << steps[c] << '\n';
         }
     }
 }
