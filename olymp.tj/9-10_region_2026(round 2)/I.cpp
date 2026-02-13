@@ -19,13 +19,14 @@ vector<ll> split(string s){
 
 int main() {
     int n, m, h;
-    scanf("%d %d %d", &n, &m, &h);
     vector<ll> l, p;
+    scanf("%d %d %d\n", &n, &m, &h);
     string s, pp, u;
-    getline(cin, u);
+    //getline(cin, u);
     getline(cin, s);
     //getline(cin, u);
     getline(cin, pp);
+
     l = split(s);
     p = split(pp);
     sort(l.begin(), l.end(), greater<int>());
