@@ -7,5 +7,6 @@ for i in range(1,n+1):
     a = [int(x) for x in s.split()]
     for j in a:
         g[j-1].append(i)
+print (n)
 for _ in g:
     print(*sorted(_))
