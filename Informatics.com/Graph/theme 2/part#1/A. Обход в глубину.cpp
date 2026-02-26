@@ -16,10 +16,12 @@ int main()
 {
     int n, x;
     cin >> n >> x;
-    vvi graph(n, vi(n));
-    for (auto &i:graph){
-        for (int &j:i){
-            cin >> j;
+    --x;
+    vvi graph(n);
+    for (int i=0; i<n; i++){
+        for (int j=0; j<n; j++){
+            int a; cin >> a;
+            if(a) graph[i].pb(j);
         }
     }
     vi comp;
