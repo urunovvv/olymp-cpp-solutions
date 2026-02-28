@@ -11,21 +11,18 @@ void dfs(int v){
     used[v] = true;
     cnt++;
     for(int to : g[v]){
-        if (to){
-            if(!used[to])
-                dfs(to);
-        }
+        if(!used[to]) dfs(to);
     }
 }
 int main(){
     int n;
     cin >> n;
-    //g.resize(n, vector<int>(n));
+    g.resize(n);
     int edges = 0;
     for(int i = 0; i < n; i++){
-        for(int j = 0; j < n; j++){
+        for (int j = 0; j < n; j++){
             int a; cin >> a;
-            if (a){g[i].pb(j); g[j].pb(i);}
+            if (a){g[i].pb(j);}
             if(a && j < i)
                 edges++;
         }
