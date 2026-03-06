@@ -4,14 +4,12 @@
 using namespace std;
 
 int main() {
-    int n, m;
-    cin >> n >> m;
+    int n;
+    cin >> n;
     vector<vector<int>> g(n, vector<int>(n, 0));
-    while(m--){
-        int a, b; cin >> a >> b;
-        --a; --b;
-        g[a][b] = 1;
-        g[b][a] = 1;
+    for (auto &i:g){
+        for (auto &j:i)
+            cin >> j;
     }
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
