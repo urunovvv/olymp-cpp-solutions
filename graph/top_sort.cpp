@@ -82,5 +82,4 @@ int main(){
         in[b]++;
     }
     KAN();
-    //top_sort_lesson();
 }
