@@ -2,7 +2,7 @@
 using namespace std;
 vector<vector<int>>g;
 vector<bool>used(1e5, false);
-vector<int>f(1e5), t_in(1e5);
+vector<int>f(1e5, 0), t_in(1e5, 0);
 int t = 1;
 int bridges = 0;
 
@@ -24,18 +24,18 @@ void DFS(int from, int v){
 }
 
 int main(){
-    int m;
+    int m,n;
     cin >> n >> m;
     g.resize(n+1); t_in.resize(n+1); f.resize(n+1);
-    while (m--){
+    for(int i=0; i<m; i++){
         int a,b;
         cin >> a >> b;
         g[a].push_back(b);
         g[b].push_back(a);
     }
     for (int i=1; i<=n; i++){
-        if (!used[i]) DFS(i, -1);
+        if (!used[i]) DFS(-1, i);
     }
-    cout << n - bridges << '\n';
+    cout << m - bridges << '\n';
     return 0;
 }

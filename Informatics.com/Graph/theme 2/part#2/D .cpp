@@ -1,4 +1,3 @@
-D. 
 #include <bits/stdc++.h>
 using namespace std;
 int n,m;
@@ -18,7 +17,7 @@ vector<int> bfs(int s){
             }
         }
     }
-    return vis;
+    return used;
 }
 
 int main(){

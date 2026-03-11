@@ -18,7 +18,7 @@ bool bfs(int a,int b,int ban){
             }
         }
     }
-    return vis[b];
+    return used[b];
 }
 
 int main(){
