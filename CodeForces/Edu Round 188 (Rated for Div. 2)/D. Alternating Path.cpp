@@ -18,7 +18,7 @@ void solve(){
             if (color[start]) continue;
             queue<int> q;
             q.push(start);
-            used[start] = true;
+            used[start] = true; 
             color[start] = 0;
             ll cnt[2] = {1, 0};
             bool flag = true;
