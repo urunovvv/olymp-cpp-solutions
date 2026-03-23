@@ -13,7 +13,9 @@
 #include <bits/stdc++.h>
 #define ll long long
 using namespace std;
-int main() {  
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int n, q;  
     cin >> n >> q;  
     vector<int> a(n), pref(n + 1, 0), suff(n + 1, 0);  

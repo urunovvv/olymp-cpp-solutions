@@ -2,38 +2,23 @@
 #define ll long long
 using namespace std;
 int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
     int n;
     cin >> n;
-    bool flag = 0;
-    vector<int> c(n+1, 0), a = {1};
-    for(int i = 1; i <= n; i++) {
-        cin >> c[i];
-        //cout << c[i] << ' ';
-        if (c[i] == 1) flag = 1;
+    vector<int> a(n, 0), b = {1};
+    for (int i = 0; i < n; i++){
+        cin >> a[i];
     }
-    sort(c.begin(), c.end());
-    if (!flag) {
-        cout << "NO" << endl;
-        return 0;
-    }
-    /*for (int i:c){
-    }    cout << endl;*/
-    for (int i=0; i<n and a.size() < n; i++){
-        bool changed = false;
-        int k = 1;
-        cout << c[k] << ' ';
-        for (int j=0; j<=n; j++){
-            if (a[i] + c[j] == c[k]){
-                a.push_back(c[k]);
-                changed = true;
-                k++;
-                break;
-            }
-        }
-        if (!changed){
-            cout << "NO" << endl;
+    sort(a.begin(), a.end());
+    ll sum = 1;
+    for (int i=1; i<n; i++){
+        if (sum < a[i]){
+            cout << "NO\n";
             return 0;
         }
+        sum += (ll)a[i];
     }
-    cout << "YES" << endl;
+    cout << "YES";
+    return 0;
 }

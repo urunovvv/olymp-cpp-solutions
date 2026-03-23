@@ -47,13 +47,11 @@ int main() {
         cout << "YES";
         return 0;
     }
-
-    int target = n;
     if (dupCnt == 1) {
         for (int i = 0; i < n; i++) {
             if (a[i] != dupValue) continue;
-            ll remain = sum - a[i];
-            if (remain % target == 0) {
+            ll sm = sum - a[i];
+            if (sm % n == 0) {
                 cout << "YES";
                 return 0;
             }
@@ -63,8 +61,8 @@ int main() {
     }
 
     for (int i = 0; i < n; i++) {
-        ll remain = sum - a[i];
-        if (remain % target == 0) {
+        ll sm = sum - a[i];
+        if (sm % n == 0) {
             cout << "YES";
             return 0;
         }

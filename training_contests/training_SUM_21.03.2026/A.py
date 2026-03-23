@@ -6,35 +6,30 @@
 # плавающей точкой, то результатом будет число с плавающей точкой. Иначе результатом 
 # будет целое число.
 
-def isdigit(s):
-    b = True
-    point, minus = 0, 0
-    for c in s:
-        if c == '.':
-            point += 1
-        elif c == '-':
-            minus += 1
-        elif not ('0' <= c <= '9'):
-            return False
-    if point > 1 or minus > 1:
-        return False
-    b_point = False
-    b_minus = False
-    if point == 1:
-        b_point = True
-    if (minus == 1 and s[0] == '-'):
-        b_minus = True
-    else:
-        return False
-    b = (b_minus or b_point) or (not b_minus and not b_point)
-    return b
+from decimal import Decimal
 
-a = input().strip()
-b = input().strip()
-if isdigit(a) and isdigit(b):
-    if '.' in a or '.' in b:
-        print(float(a) + float(b))
-    else:
-        print(int(a) + int(b))
+def is_digit(s):
+    minus = s.count('-')
+    dot = s.count('.')
+    if minus > 1 or dot > 1:
+        return False
+    minus = s.find('-')
+    dot = s.find('.')
+    if not (minus == -1 or minus == 0):
+        return False
+    if not (dot == -1 or dot != 0 and dot != len(s) - 1):
+        return False
+    for c in s: 
+        if c == '-' or c == '.':
+            continue
+        if not c.isdigit():
+            return False
+    return True
+a = input()
+b = input()
+if is_digit(a) and is_digit(b):
+    a = Decimal(a)
+    b = Decimal(b)
+    print(sum([a, b]))
 else:
-    print(a + b)
+    print (a + b)
