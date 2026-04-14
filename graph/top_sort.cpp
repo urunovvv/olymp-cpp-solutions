@@ -6,14 +6,16 @@ using namespace std;
 int n;
 vvi g;
 vii in;
-void KAN()
-{
+vii order;
+vector<bool>used(n+1, false);
+
+void KAN(){
     vii res;
     queue<int>q;
     for (int i=1; i<=n; i++)
         if (!in[i]) q.push(i);
     if (q.empty()){
-        cout << "No\n";
+        cout << "-1\n";
         return;
     }
     while (!q.empty()){
@@ -24,52 +26,19 @@ void KAN()
             in[to]--;
             if (!in[to])q.push(to);
         }
-        g[f].clear();
     }
     if (res.size() != n){
-        cout << "No\n";
+        cout << "-1\n";
         return;
     }
     else{
-        cout << "Yes\n";
-        for (int i:res){
-            cout << i << ' ';
+        vector<int>res1(n+1, 0);
+        for (int i=1; i<=n; i++){
+            res1[res[i]] = i;
         }
+        for (int i:res1) cout << i << ' ';
     }
 }
-
-void top_sort_dfs(){
-
-}
-void top_sort_lesson(){
-    vii res;
-    for (int i=1; i<=n; i++){
-        bool flag = false;
-        for (int j=1; j<=n; j++){
-            if (in[j] == 0){
-                flag = true;
-                res.pb(j);
-                for (int k=0; k<g[j].size(); k++){
-                    in[g[j][k]]--;
-                }
-                g[j].clear();
-            }
-        }
-        if (!flag){
-            cout << "NO\n";
-            return;
-        }
-    }
-    if (res.size() != n)
-        cout << "NO\n";
-    else{
-        cout << "YES\n";
-        for (int i:res){
-            cout << i << ' ';
-        }
-    }
-}
-
 int main(){
     int m;
     cin >> n >> m;

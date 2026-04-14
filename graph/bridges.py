@@ -1,33 +1,49 @@
-n,m = map(int, input().split())
-used = [False for x in range(n+1)]
-g = [[]] * (n+1)
-f = []*(10**5)
-t_in = [] * (n+1)
-time = 1
-cnt = 0
-def dfs(frm, v):
-    used[v] = True
-    t_in[v] = time
-    time += 1
-    f[v] = t_in[v]
-    for to in g[v]:
-        if to == frm:
-            continue
-        elif used[to]:
-            f[v] = min(f[v], t_in[to])
+# import sys
+# sys.setrecursionlimit(2**70)
+
+n, m = map(int, input().split())
+used = [False] * (n + 1)
+g = [[] for _ in range(n + 1)]
+f = [0] * (n + 10)
+t_in = [0] * (n + 10)
+tt = [1]
+bridges = []
+stack = []
+def dfs(start_v):
+    global tt, stack
+    stack.append((start_v, -1, -1, 0))
+    while stack != []:
+        v, p, p_id, idx = stack[-1]
+        if idx == 0 and not used[v]:
+            used[v] = True
+            t_in[v] = tt[0]
+            f[v] = tt[0]
+            tt[0] += 1
+        if idx < len(g[v]):
+            to, edge_id = g[v][idx]
+            stack[-1] = (v, p, p_id, idx + 1)
+            if edge_id == p_id:
+                continue
+            if used[to]:
+                f[v] = min(f[v], t_in[to])
+            else:
+                stack.append((to, v, edge_id, 0))
         else:
-            dfs(v, to)
-            f[v] = min(f[v], t_in[to])
-            if t_in[v] < f[to]:
-                cnt+=1
-    return cnt
-for i in range(m):
-    a,b = map(int, input().split())
-    g[a].append(b)
-    g[b].append(a)
-count = 0
-for i in range(1, n+1):
+            stack.pop()
+            if p != -1:
+                f[p] = min(f[p], f[v])
+                if t_in[p] < f[v]:
+                    bridges.append(p_id)
+for i in range(1, m + 1):
+    a, b = map(int, input().split())
+    g[a].append((b, i))
+    g[b].append((a, i))
+
+for i in range(1, n + 1):
     if not used[i]:
-        count += (dfs(i, i))
-print (count)
-#print (n - count)
+        dfs(i)
+
+bridges.sort()
+print(len(bridges))
+if bridges != []:
+    print(*bridges, sep='\n')

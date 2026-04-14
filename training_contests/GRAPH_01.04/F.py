@@ -1,34 +1,39 @@
-n,m = map(int, input().split())
-used = [False for x in range(n+1)]
-g = [[]] * (n+1)
-f = []*(10**5)
-t_in = [] * (n+1)
-global time
-time = 1
-cnt = 0
-def dfs(frm, v):
-    used[v] = True
-    t_in[v] = time
-    time += 1
-    f[v] = t_in[v]
-    for to in g[v]:
-        if to == frm:
+n, m = map(int, input().split())
+used = [False] * (n + 1)
+g = [[] for _ in range(n + 1)]
+t_in = [0] * (n + 1)
+low = [0] * (n + 1)
+time = [1]  # use list to pass by reference
+bridges = 0
+
+def dfs(u, parent):
+    global bridges
+    used[u] = True
+    t_in[u] = time[0]
+    low[u] = time[0]
+    time[0] += 1
+    
+    for v in g[u]:
+        if v == parent:
             continue
-        elif used[to]:
-            f[v] = min(f[v], t_in[to])
+        elif used[v]:
+            # back edge
+            low[u] = min(low[u], t_in[v])
         else:
-            dfs(v, to)
-            f[v] = min(f[v], t_in[to])
-            if t_in[v] < f[to]:
-                cnt+=1
-    return cnt
+            # tree edge
+            dfs(v, u)
+            low[u] = min(low[u], low[v])
+            # check if edge (u, v) is a bridge
+            if low[v] > t_in[u]:
+                bridges += 1
+
 for i in range(m):
-    a,b = map(int, input().split())
+    a, b = map(int, input().split())
     g[a].append(b)
     g[b].append(a)
-count = 0
-for i in range(1, n+1):
+
+for i in range(1, n + 1):
     if not used[i]:
-        count += (dfs(i, i))
-#print (count)
-print (m - count)
+        dfs(i, -1)
+
+print(bridges)
