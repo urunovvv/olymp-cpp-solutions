@@ -1,3 +1,8 @@
+class pair:
+    def init(self, first, second):
+        self.first = first
+        self.second = second
+
 def main():
     csv = input().split(',')
     d = {}
