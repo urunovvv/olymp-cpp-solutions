@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+    vector<vector<int>> g(n, vector<int>(n, 0));
+    while(m--){
+        int a, b; cin >> a >> b;
+        --a; --b;
+        g[a][b] = 1;
+        g[b][a] = 1;
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            for (int k = 0; k < n; k++) {
+                if (g[i][j] and g[j][k]) {
+                    if (g[i][k] == 0 and i != k) {
+                        cout << "NO";
+                        return 0;
+                    }
+                }
+            }
+        }
+    }
+
+    cout << "YES";
+    return 0;
+}
