@@ -4,11 +4,11 @@
 
 ## 📁 Структура репозитория
 
-*   **[acmp](./acmp)** / **[acmp_отбор](./acmp_отбор)** — решения задач с сайта acmp.ru.
-*   **[CodeForces](./CodeForces)** — тренировки и участие в раундах Codeforces.
+*   **[acmp](./acmp)** / **[acmp_отбор](./acmp_отбор)** — решения задач с сайта **[ACMP.RU](https://acmp.ru)**.
+*   **[CodeForces](./CodeForces)** — тренировки и участие в раундах **[CodeForces](https://codeforces.com/profile/urunov)**.
 *   **[graph](./graph)** / **[://informatics.com Graph](./://informatics.com%20Graph)** — алгоритмы на графы (обходы, кратчайшие пути).
 *   **[mom-2025](./mom-2025)** — задачи Международной олимпиады молодежи (ВШЭ) 2025 года.
-*   **[olymp.tj](./olymp.tj)** — задачи с таджикистанских олимпиадных платформ.
+*   **[olymp.tj](./olymp.tj)** / **[Electicode](./Electicode)** — задачи с таджикистанских олимпиадных платформ (таких как **[olymp.tj](https://olymp.tj)** и **[electicode](https://electicode.com)**).
 *   **[foxford](./foxford)** — задачи с курсов и интенсивов Фоксфорда.
 *   **[training_contests](./training_contests)** — файлы с различных тренировочных контестов.
 *   **[Hometasks](./Hometasks)** — домашние задания по программированию.
@@ -22,4 +22,3 @@
 
 ---
 *Создано для личного архива и обмена опытом.*
-
