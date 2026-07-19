@@ -18,7 +18,7 @@ int main(){
     }
     sort(areas.rbegin(), areas.rend());
     ld l = 0, r = total_area;
-    printf("total %d\n", total_area);
+    printf("total %d\n", total_area); 
     ld ans = 0;
     while (r - l > eps) {
         ld mid = (l + r) / 2.0; // trying to guess the area of a piece of pizza
