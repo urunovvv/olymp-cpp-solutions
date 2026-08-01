@@ -2,32 +2,52 @@
 using namespace std;
 #define ll long long 
 
-vector<vector<ll>> pref;
+vector<vector<ll>> pref(500, vector<ll>(500, 0));
 
-bool isZero(int x1, int y1, int x2, int y2){
-    return pref[x2][y2] - pref[x1-1][y2] - pref[x2][y1-1] + pref[x1-1][y1-1] == 0;
+ll zeroesInLine(vector<ll> &a){ 
+    int n = a.size();
+    unordered_map<ll, ll>  cnt;
+    cnt[0] = 1;
+    ll sum = 0, ans = 0;
+    for (int i = 0; i < n; i++){
+        sum += a[i];
+        if (cnt[sum] != 0) ans += cnt[sum];
+        cnt[sum]++;
+    }
+    return ans;
+}
+
+vector<ll> mergeRows(int top, int bottom){  
+    vector<ll> a(pref[0].size());
+    for (int i = 0; i < a.size(); i++){
+        a[i] = pref[bottom][i] - pref[top-1][i];
+    }
+    return a;
+}
+
+ll solve(vector<vector<ll>> &v){
+    ll ans = 0LL;
+    int n = v.size();
+    int m = v[0].size();
+    vector<ll> row;
+    for (int i = 0; i < n; i++){
+        for (int j = i; j < n; j++){
+            row = mergeRows(i, j);
+            ans += zeroesInLine(row);
+        }
+    }
+    return ans;
 }
 
 int main(){
-    int n, m;
+    ll n, m;    
     cin >> n >> m;
-    vector<vector<ll>> a(n, vector<ll>(m, 0));
-    pref.resize(n+1, vector<ll>(m+1, 0));
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            cin >> a[i][j];
-            pref[i+1][j+1] = pref[i][j+1] + pref[i+1][j] - pref[i][j] + a[i][j];
+    vector<vector<ll>> v(n+1, vector<ll>(m+1, 0));
+    for (int i = 1; i <= n; i++){
+        for (int j = 1; j <= m; j++){
+            cin >> v[i][j];
+            pref[i][j] = v[i][j] + (pref[i - 1][j] + pref[i][j - 1] - pref[i - 1][j - 1]);
         }
     }
-    ll cnt = 0;
-    for (int x1=1; x1 <= n; x1++){
-        for (int y1 = 1; y1 <= m; y1++){
-            for (int x2 = x1; x2 <= n; x2++){
-                for (int y2 = y1; y2 <= m; y2++){
-                    cnt += isZero(x1, y1, x2, y2);
-                }
-            }
-        }
-    }
-    cout << cnt << '\n';
+    cout << solve(v);
 }
