@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 #define ll long long
+#define ff first
+#define ss second
 using namespace std;
 
 int main()
@@ -13,11 +15,11 @@ int main()
         sort(s.begin(), s.end());
         cnt[s]++;
     }
-    ll answer = 0;
+    ll ans = 0;
     for (auto &p:cnt){
-        ll temp = p.second;
-        answer += (temp*(temp-1))/2;
+        ll temp = p.ss;
+        ans += (temp*(temp-1))/2;
     }
-    cout << answer;
+    cout << ans;
     return 0;
 }
