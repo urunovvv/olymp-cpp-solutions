@@ -4,26 +4,17 @@ using namespace std;
 
 const int SIZE = 2e5+1;
 
-vector<int>visited(SIZE, 0);
+vector<int>vis(SIZE, 0);
 vector<vector<int>> graph(SIZE);
-
-bool haveCycle(int start) {
-    int n = graph.size();
-    queue<int>q;
-    visited[start] = 1;
-    q.push(start);
-    while (!q.empty()) {
-        int v = q.front();
-        q.pop();
-        for (int x : graph[v]) {
-            if (!visited[x]) {
-                visited[x] = 1;
-                q.push(x);
-            }
-            else return true;
-        }
+bool flag = false;
+void dfs(int start) { // based on DFS
+    vis[start] = 1;
+    for (int to : graph[start]){
+    	if (vis[to] == 1)
+	    flag = true;
+	else if (vis[to] == 0) dfs(to);
     }
-    return false;
+    vis[start] = 2;
 }
 
 int main()
@@ -36,10 +27,14 @@ int main()
         graph[u].push_back(v);
     }
     for (int i = 1; i <= n; i++){
-        if (haveCycle(i)){
-            cout << "YES";
-            return 0;
+        if (vis[i] == 0){
+	    flag = false;
+	    dfs(i);
+	    if (flag){
+            	cout << "YES\n";
+            	return 0;
+	    }
         }
     }
-    cout << "NO";
+    cout << "NO\n";
 }
