@@ -6,7 +6,7 @@ int check(int i, int j){
     if (i <= 2 && j <= 2 || i >= 7 && j >= 7) return 3;
     if (i <= 3 && j <= 3 || i >= 6 && j >= 6) return 4;
     return 5;
-}я
+}
 int main(){
     int t;
     cin >> t;
