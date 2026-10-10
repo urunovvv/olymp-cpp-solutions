@@ -1,0 +1,7 @@
+def makeString(n, start):
+    
+
+for _ in range(int(input())):
+    n = int(input())
+    for j in range(n):
+

@@ -15,4 +15,4 @@ for i in range(2, n+1):
         for _ in frm[j]:
             dp[i][_] += dp[i-1][j]
 
-print(sum(dp[n]) if n != 1 else 10)
+print(sum(dp[n]) - dp[n-1][8] if n != 1 else 10)
